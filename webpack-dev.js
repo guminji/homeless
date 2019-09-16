@@ -3,6 +3,7 @@
  */
 //开发环境的打包配置
 var path = require("path");
+var webpack = require('webpack');
 var htmlWebpackPlugin = require("html-webpack-plugin");
 var ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -12,7 +13,8 @@ var config = {
     //入口文件
     entry:{
         index:'./src/js/index.js',
-        content:"./src/js/content.js"
+        content:"./src/js/content.js",
+        //vendors: ['react', "react-dom"],
     },
     //输出地址
     output:{
@@ -119,19 +121,37 @@ var config = {
             filename: './css/[name].min.css',
             allChunks: true // 一开始所有css都打包
         }),
+        //new webpack.optimize.CommonsChunkPlugin({
+        //    name: 'vendors',
+        //    filename: '[name].[hash:4].js'//生成的vendors文件就是以这样的形式命名
+        //}),
+
         //new ExtractTextPlugin("css/[name].css"),
         new htmlWebpackPlugin({
             template:"./src/template/index.html",
             filename:"index.html",
             chunks:['index','content']
         }),
+
         new copyWebpackPlugin([
             {
                 from:__dirname+'/src/static',//打包的静态资源目录地址
                 to:'./static' //打包到dist下面的static
             }
         ]),
+
     ],
+    //optimization: {
+    //    splitChunks: {
+    //        cacheGroups: {
+    //            commons: {
+    //                name: "commons",
+    //                chunks: "initial",
+    //                minChunks: 2
+    //            }
+    //        }
+    //    }
+    //},
     //开发环境本地服务
     devServer: {
         //contentBase: path.resolve(__dirname, "fontEnd/dist"),

@@ -1,0 +1,94 @@
+#login{
+    height:100%;
+    .container{
+        padding-top:1px;
+        height:100%;
+        //background:url("../static/images/login_bg.jpeg") center  no-repeat;
+        background:url("../static/images/login/bg.jpg") bottom center  no-repeat;
+        background-size: cover;
+        .logo{
+            height: 3rem;
+            width: 3rem;
+            margin: 1rem auto;
+            background: url('../static/images/login/logo.png');
+            background-size: 100% 100%;
+        }
+        .form{
+            .textContainer{
+                width:5.9rem;
+                margin: 0 auto;
+                height:1.23rem;
+                border-bottom:1px solid #e8e8e8;
+                text-align: left;
+                vertical-align:middle;
+                //用户名输入框样式
+                .userIcon{
+                    float:left;
+                    height:0.42rem;
+                    width: 0.38rem;
+                    background:url("../static/images/login/userIcon.png") top center no-repeat;
+                    background-size:cover;
+                    display: inline-block;
+                    margin:0.35rem 0.25rem 0 0.2rem;
+                }
+                .loginText{
+                    float:left;
+                    line-height: 1.23rem;
+                    font-size:0.28rem;
+                    height:1.2rem;
+                    width:4.6rem;
+                    align:middle;
+                    outline: none;
+                }
+                //密码输入框样式
+                .loginPsw{
+                    float:left;
+                    font-size:0.28rem;
+                    height:1.2rem;
+                    width:4.6rem;
+                    line-height: 1.23rem;
+                    border:0;
+                    outline: none;
+                }
+                .pswIcon{
+                    float:left;
+                    height:0.38rem;
+                    width: 0.38rem;
+                    background:url("../static/images/login/pswIcon.png") top center no-repeat;
+                    background-size:cover;
+                    display: inline-block;
+                    margin:0.39rem 0.25rem 0 0.2rem;
+                }
+            }
+            .submit{
+                margin: 0.6rem auto 0.25rem;
+                height:0.87rem;
+                width: 6rem;
+                background: #f8956a;
+                border-radius: 0.87rem;
+                p{
+                    font-size:0.37rem;
+                    line-height: 0.87rem;
+                    text-align: center;
+                    width: 6rem;
+                    color:#ffffff;
+                    font-weight:bold;
+
+                }
+            }
+            .otherFn{
+                width:5.8rem;
+                margin:0 auto;
+                font-size:0.24rem;
+                color:#666666;
+                :nth-child(1){
+                    float:left;
+                }
+                :nth-child(2){
+                    float:right;
+                }
+            }
+        }
+
+    }
+}
