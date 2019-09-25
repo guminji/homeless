@@ -3,6 +3,8 @@
  */
 import React, { Component } from 'react'
 import InputText from '../component/inputText';
+import toast from '../component/common/toast';
+import fetch from '../api/fetch';
 import {
     BrowserRouter as Router,
     Route,
@@ -28,9 +30,24 @@ export default class register extends Component {
         this.setState({psd:event.target.value});
     }
     //提交信息
-    submit(){
-        //提交信息
-        console.log('information',this.state);
+    //注册
+    signUp(){
+        fetch('./api/unauth/sign',{
+            method:'post',
+            headers:{
+                'Content-Type':'application/json;charset=UTF-8'
+            },
+            data:{
+                username:this.state.name,
+                userpwd:this.state.psd
+            },
+            mode:'cors',
+            cache:'default'
+        }).then(function(res){console.log('success',res)},function(res){
+            toast.info(res.msg,1000)
+            console.log('fail')
+        })
+
     }
     render() {
         return (
@@ -46,13 +63,13 @@ export default class register extends Component {
                             <i className="pswIcon"></i>
                             <input type="password" className="loginPsw" value={this.psd} placeholder="输入密码" onChange={this.changePassword.bind(this)}/>
                         </div>
-                        <div className="submit" onClick={this.submit.bind(this)}>
-                            <p>登录</p>
+                        <div className="submit" onClick={this.signUp.bind(this)}>
+                            <p>注册</p>
                         </div>
                         <div className="otherFn clearfix">
-                            <p onClick={()=> {this.props.history.push('./register')}}>注册</p>
-                            <p onClick={()=> {this.props.history.push('./changePwd')}}>忘记密码</p>
+                            <p className="" onClick={()=> {this.props.history.push('./')}}>注册</p>
                         </div>
+
                     </div>
                 </div>
             </div>

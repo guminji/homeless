@@ -12,11 +12,13 @@ import {
 import { browserHistory , IndexRoute, hashHistory} from 'react-router';
 import routes from './router/router-config.js'; //路由配置
 import {login} from './page'; //页面
+require('./globel.js');
 
 //引入样式
-require("../css/login.less");
-require("../css/index.css");
-require("../css/common.less");
+require("../css/page/login.less");
+require("../css/page/index.css");
+require("../css/common.less");//公共样式
+require("../css/fontIcon.css");//iconfont图标
 
 //引入自适应rem font-size变化
 function resetWidth() {

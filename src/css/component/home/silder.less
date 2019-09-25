@@ -1,0 +1,50 @@
+.carousel{
+    width: 100%;
+    position:relative;
+    overflow: hidden;
+    height:3rem;
+    cursor: pointer;
+    .leftArrow{
+        position: absolute;
+        left:0;
+        top:0;
+        z-index:2;
+    }
+    .rightArrow{
+        position: absolute;
+        right:0;
+        top:0;
+        z-index:2;
+    }
+    .carouselContainer{
+        position: absolute;
+        height:100%;
+        overflow: hidden;
+        float:left;
+        .informationList{
+            float:left;
+            img{
+                height:100%;
+                width: 100%;
+            }
+        }
+    }
+    .dotsContainer{
+        position: absolute;
+        width: 100%;
+        bottom:0;
+        font-size:0.2rem;
+        .dots{
+            margin-left:0.12rem;
+            height:0.2rem;
+            width: 0.2rem;
+            background:gray;
+            border-radius: 0.2rem;
+            display:inline-block;
+            &.active{
+                background:white;
+                width: 0.4rem;
+            }
+        }
+    }
+}

@@ -153,13 +153,21 @@ var config = {
     //    }
     //},
     //开发环境本地服务
+    devtool: 'source-map',
     devServer: {
         //contentBase: path.resolve(__dirname, "fontEnd/dist"),
         //publicPath:'/',
         open:true,
         inline:true,
         hot:true,
-        port:'3001'
+        port:'3001',
+        proxy:{
+            '/api': {
+                target: 'http://localhost:3000',
+                pathRewrite: {'^/api' : ''}
+            }
+        },
+        historyApiFallback:true
     },
 
 }

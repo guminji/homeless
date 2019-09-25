@@ -27,10 +27,29 @@ export default class login extends Component {
     changePassword(event){
         this.setState({psd:event.target.value});
     }
-    //提交信息
-    submit(){
-        //提交信息
-        console.log('information',this.state);
+    //登录
+    login(){
+        ajax('./api/unauth/login',{
+            method:'post',
+            headers:{
+                'Content-Type':'application/json;charset=UTF-8'
+            },
+            data:{
+                username:this.state.name,
+                userpwd:this.state.psd
+            },
+            mode:'cors',
+            cache:'default'
+        }).then((res)=>{
+            //设置cookie
+            cookie.save('token',res.token);
+            toast.info('登录成功',1000,()=>{
+                this.props.history.push('index')
+            });
+        },(res)=>{
+            console.log('fail',res)
+        })
+
     }
     render() {
         return (
@@ -46,11 +65,11 @@ export default class login extends Component {
                             <i className="pswIcon"></i>
                             <input type="password" className="loginPsw" value={this.psd} placeholder="输入密码" onChange={this.changePassword.bind(this)}/>
                         </div>
-                        <div className="submit" onClick={this.submit.bind(this)}>
+                        <div className="submit" onClick={this.login.bind(this)}>
                             <p>登录</p>
                         </div>
                         <div className="otherFn clearfix">
-                            <p onClick={()=> {this.props.history.push('./register')}}>注册</p>
+                            <p className="" onClick={()=> {this.props.history.push('./register')}}>注册</p>
                             <p onClick={()=> {this.props.history.push('./changePwd')}}>忘记密码</p>
                         </div>
                     </div>
